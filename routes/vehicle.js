@@ -1,4 +1,5 @@
 const express = require('express');
+var ObjectID = require('mongodb').ObjectID;
 
 // recordRoutes is an instance of the express router.
 // We use it to define our routes.
@@ -49,14 +50,9 @@ recordRoutes.route('/vehicle/create').post(function (req, res) {
 // This section will help you update a record by id.
 recordRoutes.route('/vehicle/update').patch(function (req, res) {
   const dbConnect = dbo.getDb();
-  const vehicle = { _id: req.body.id };
-  console.log('vehicle', vehicle);
+  const vehicle = { _id: new ObjectID(req.body.id) };
+  delete req.body.id;
   const updates = { $set: req.body };
-  console.log('updates', updates);
-  // updates.forEach((el) => {
-  //   console.log(el);
-  // });
-
   dbConnect
     .collection('vehiculos')
     .findOneAndUpdate(
@@ -79,7 +75,7 @@ recordRoutes.route('/vehicle/delete').delete((req, res) => {
   // Delete documents
   const dbConnect = dbo.getDb();
   console.log(req.body.id);
-  const vehicleQuery = { _id: req.body.id };
+  const vehicleQuery = { _id: new ObjectID(req.body.id) };
 
   dbConnect.collection('vehiculos').deleteOne(vehicleQuery, function (err, _result) {
     if (err) {
