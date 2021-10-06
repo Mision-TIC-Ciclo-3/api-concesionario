@@ -1,0 +1,16 @@
+{
+  "name": "api-concesionario",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Mision-TIC-Ciclo-3/api-concesionario.git",
+  "author": "Daniel Saldarriaga <dsaldarriaga@prevalentware.com>",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongodb": "^4.1.3"
+  }
+}
