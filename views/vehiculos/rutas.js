@@ -4,8 +4,8 @@ import {
   crearVehiculo,
   editarVehiculo,
   eliminarVehiculo,
+  consultarVehiculo,
 } from '../../controllers/vehiculos/controller.js';
-import { getDB } from '../../db/db.js';
 
 const rutasVehiculo = Express.Router();
 
@@ -24,6 +24,11 @@ rutasVehiculo.route('/vehiculos').get((req, res) => {
 
 rutasVehiculo.route('/vehiculos').post((req, res) => {
   crearVehiculo(req.body, genercCallback(res));
+});
+
+rutasVehiculo.route('/vehiculos/:id').get((req, res) => {
+  console.log('alguien hizo get en la ruta /vehiculos');
+  consultarVehiculo(req.params.id, genercCallback(res));
 });
 
 rutasVehiculo.route('/vehiculos/:id').patch((req, res) => {

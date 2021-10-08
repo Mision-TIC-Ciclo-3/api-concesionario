@@ -3,7 +3,7 @@ import { getDB } from '../../db/db.js';
 
 const queryAllVehicles = async (callback) => {
   const baseDeDatos = getDB();
-  await baseDeDatos.collection('vehiculo').find().limit(50).toArray(callback);
+  await baseDeDatos.collection('vehiculo').find({}).limit(50).toArray(callback);
 };
 
 const crearVehiculo = async (datosVehiculo, callback) => {
@@ -18,6 +18,11 @@ const crearVehiculo = async (datosVehiculo, callback) => {
   } else {
     return 'error';
   }
+};
+
+const consultarVehiculo = async (id, callback) => {
+  const baseDeDatos = getDB();
+  await baseDeDatos.collection('vehiculo').findOne({ _id: new ObjectId(id) }, callback);
 };
 
 const editarVehiculo = async (id, edicion, callback) => {
@@ -37,4 +42,4 @@ const eliminarVehiculo = async (id, callback) => {
   await baseDeDatos.collection('vehiculo').deleteOne(filtroVehiculo, callback);
 };
 
-export { queryAllVehicles, crearVehiculo, editarVehiculo, eliminarVehiculo };
+export { queryAllVehicles, crearVehiculo, consultarVehiculo, editarVehiculo, eliminarVehiculo };
