@@ -32,4 +32,10 @@ const editarVehiculo = async (edicion, callback) => {
     .findOneAndUpdate(filtroVehiculo, operacion, { upsert: true, returnOriginal: true }, callback);
 };
 
-export { queryAllVehicles, crearVehiculo, editarVehiculo };
+const eliminarVehiculo = async (id, callback) => {
+  const filtroVehiculo = { _id: new ObjectId(id) };
+  const baseDeDatos = getDB();
+  await baseDeDatos.collection('vehiculo').deleteOne(filtroVehiculo, callback);
+};
+
+export { queryAllVehicles, crearVehiculo, editarVehiculo, eliminarVehiculo };
