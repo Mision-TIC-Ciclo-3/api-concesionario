@@ -6,6 +6,29 @@ import {
   eliminarVehiculo,
   consultarVehiculo,
 } from '../../controllers/vehiculos/controller.js';
+import jwt from 'express-jwt';
+import jwtAuthz from 'express-jwt-authz';
+import jwksRsa from 'jwks-rsa';
+
+// Authorization middleware. When used, the
+// Access Token must exist and be verified against
+// the Auth0 JSON Web Key Set
+export const checkJwt = jwt({
+  // Dynamically provide a signing key
+  // based on the kid in the header and
+  // the signing keys provided by the JWKS endpoint.
+  secret: jwksRsa.expressJwtSecret({
+    cache: true,
+    rateLimit: true,
+    jwksRequestsPerMinute: 5,
+    jwksUri: `https://test-misiontic.us.auth0.com/.well-known/jwks.json`,
+  }),
+
+  // Validate the audience and the issuer.
+  audience: 'autenticacion-test-misiontic',
+  issuer: [`https://test-misiontic.us.auth0.com/`],
+  algorithms: ['RS256'],
+});
 
 const rutasVehiculo = Express.Router();
 
@@ -17,7 +40,7 @@ const genercCallback = (res) => (err, result) => {
   }
 };
 
-rutasVehiculo.route('/vehiculos').get((req, res) => {
+rutasVehiculo.route('/vehiculos').get(checkJwt, (req, res) => {
   console.log('alguien hizo get en la ruta /vehiculos');
   queryAllVehicles(genercCallback(res));
 });
