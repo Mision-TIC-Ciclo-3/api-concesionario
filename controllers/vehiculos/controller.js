@@ -14,6 +14,7 @@ const crearVehiculo = async (datosVehiculo, callback) => {
   ) {
     const baseDeDatos = getDB();
     // implementar código para crear vehículo en la BD
+
     await baseDeDatos.collection('vehiculo').insertOne(datosVehiculo, callback);
   } else {
     return 'error';
