@@ -12,6 +12,7 @@ import jwks from 'jwks-rsa';
 import rutasVehiculo from './views/vehiculos/rutas.js';
 import rutasUsuario from './views/usuarios/rutas.js';
 import rutasVenta from './views/ventas/rutas.js';
+import userMiddleware from './middleware/users.js';
 
 dotenv.config({ path: './.env' });
 
@@ -33,6 +34,7 @@ var jwtCheck = jwt({
 });
 
 app.use(jwtCheck);
+app.use(userMiddleware);
 
 app.use(rutasVehiculo);
 app.use(rutasUsuario);

@@ -19,7 +19,6 @@ const genercCallback = (res) => (err, result) => {
 };
 
 rutasVehiculo.route('/vehiculos').get((req, res) => {
-  console.log('alguien hizo get en la ruta /vehiculos');
   queryAllVehicles(genercCallback(res));
 });
 
