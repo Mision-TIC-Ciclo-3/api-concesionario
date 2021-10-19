@@ -19,6 +19,7 @@ const consultarUsuario = async (id, callback) => {
 };
 
 const consultarOCrearUsuario = async (req, callback) => {
+  console.log('Estoy llegando a crear usuario');
   // 6.1. obtener los datos del usuario desde el token
   const token = req.headers.authorization.split('Bearer ')[1];
   const user = jwt_decode(token)['http://localhost/userData'];
