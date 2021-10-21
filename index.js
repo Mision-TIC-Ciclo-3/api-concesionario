@@ -2,17 +2,17 @@
 // const express = require('express');
 
 // hacer el nuevo import
-import Express from 'express';
-import Cors from 'cors';
-import dotenv from 'dotenv';
-import { conectarBD } from './db/db.js';
-import jwt from 'express-jwt';
-import jwks from 'jwks-rsa';
-
-import rutasVehiculo from './views/vehiculos/rutas.js';
-import rutasUsuario from './views/usuarios/rutas.js';
-import rutasVenta from './views/ventas/rutas.js';
-import autorizacionEstadoUsuario from './middleware/autorizacionEstadoUsuario.js';
+const serverless = require('serverless-http');
+const Express = require('express');
+const Cors = require('cors');
+const dotenv = require('dotenv');
+const { conectarBD } = require('./db/db.js');
+const jwt = require('express-jwt');
+const jwks = require('jwks-rsa');
+const rutasVehiculo = require('./views/vehiculos/rutas.js');
+const rutasUsuario = require('./views/usuarios/rutas.js');
+const rutasVenta = require('./views/ventas/rutas.js');
+const autorizacionEstadoUsuario = require('./middleware/autorizacionEstadoUsuario.js');
 
 dotenv.config({ path: './.env' });
 
@@ -50,4 +50,4 @@ const main = () => {
   });
 };
 
-conectarBD(main);
+module.exports.handler = serverless(conectarBD(main));

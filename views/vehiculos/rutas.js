@@ -1,11 +1,11 @@
-import Express from 'express';
-import {
+const Express = require('express');
+const {
   queryAllVehicles,
   crearVehiculo,
   editarVehiculo,
   eliminarVehiculo,
   consultarVehiculo,
-} from '../../controllers/vehiculos/controller.js';
+} = require('../../controllers/vehiculos/controller.js');
 
 const rutasVehiculo = Express.Router();
 
@@ -40,4 +40,4 @@ rutasVehiculo.route('/vehiculos/:id').delete((req, res) => {
   eliminarVehiculo(req.params.id, genercCallback(res));
 });
 
-export default rutasVehiculo;
+module.exports = rutasVehiculo;

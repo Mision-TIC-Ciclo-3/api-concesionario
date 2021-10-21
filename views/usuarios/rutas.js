@@ -1,12 +1,12 @@
-import Express from 'express';
-import {
+const Express = require('express');
+const {
   queryAllUsers,
   crearUsuario,
   editarUsuario,
   eliminarUsuario,
   consultarUsuario,
   consultarOCrearUsuario,
-} from '../../controllers/usuarios/controller.js';
+} = require('../../controllers/usuarios/controller.js');
 
 const rutasUsuario = Express.Router();
 
@@ -46,4 +46,4 @@ rutasUsuario.route('/usuarios/:id').delete((req, res) => {
   eliminarUsuario(req.params.id, genercCallback(res));
 });
 
-export default rutasUsuario;
+module.exports = rutasUsuario;

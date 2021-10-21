@@ -5,10 +5,9 @@
   "repository": "https://github.com/Mision-TIC-Ciclo-3/api-concesionario.git",
   "author": "Daniel Saldarriaga <dsaldarriaga@prevalentware.com>",
   "license": "MIT",
-  "type": "module",
   "scripts": {
-    "start": "node server.js",
-    "test":"jest"
+    "start": "node index.js",
+    "test": "jest"
   },
   "engines": {
     "node": "14.x"
@@ -21,7 +20,8 @@
     "express-jwt-authz": "^2.4.1",
     "jwks-rsa": "^2.0.4",
     "jwt-decode": "^3.1.2",
-    "mongodb": "^4.1.3"
+    "mongodb": "^4.1.3",
+    "serverless-http": "^2.7.0"
   },
   "devDependencies": {
     "jest": "^27.3.1",

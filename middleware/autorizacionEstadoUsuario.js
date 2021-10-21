@@ -1,6 +1,6 @@
-import { ObjectId } from 'mongodb';
-import { getDB } from '../db/db.js';
-import jwt_decode from 'jwt-decode';
+const { ObjectId } = require('mongodb');
+const { getDB } = require('../db/db.js');
+const jwt_decode = require('jwt-decode');
 
 const autorizacionEstadoUsuario = async (req, res, next) => {
   // paso 1: obtener el usuario desde el token
@@ -29,4 +29,4 @@ const autorizacionEstadoUsuario = async (req, res, next) => {
   });
 };
 
-export default autorizacionEstadoUsuario;
+module.exports = autorizacionEstadoUsuario;

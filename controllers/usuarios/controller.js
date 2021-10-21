@@ -1,6 +1,6 @@
-import { ObjectId } from 'mongodb';
-import { getDB } from '../../db/db.js';
-import jwt_decode from 'jwt-decode';
+const { ObjectId } = require('mongodb');
+const { getDB } = require('../../db/db.js');
+const jwt_decode = require('jwt-decode');
 
 const queryAllUsers = async (callback) => {
   const baseDeDatos = getDB();
@@ -60,7 +60,7 @@ const eliminarUsuario = async (id, callback) => {
   await baseDeDatos.collection('usuario').deleteOne(filtroUsuario, callback);
 };
 
-export {
+module.exports = {
   queryAllUsers,
   crearUsuario,
   consultarUsuario,

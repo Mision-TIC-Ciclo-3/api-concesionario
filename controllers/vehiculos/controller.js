@@ -1,5 +1,5 @@
-import { ObjectId } from 'mongodb';
-import { getDB } from '../../db/db.js';
+const { ObjectId } = require('mongodb');
+const { getDB } = require('../../db/db.js');
 
 const queryAllVehicles = async (callback) => {
   const baseDeDatos = getDB();
@@ -43,4 +43,10 @@ const eliminarVehiculo = async (id, callback) => {
   await baseDeDatos.collection('vehiculo').deleteOne(filtroVehiculo, callback);
 };
 
-export { queryAllVehicles, crearVehiculo, consultarVehiculo, editarVehiculo, eliminarVehiculo };
+module.exports = {
+  queryAllVehicles,
+  crearVehiculo,
+  consultarVehiculo,
+  editarVehiculo,
+  eliminarVehiculo,
+};

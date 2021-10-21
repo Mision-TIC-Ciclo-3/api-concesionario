@@ -1,11 +1,11 @@
-import Express from 'express';
-import {
+const Express = require('express');
+const {
   queryAllSales,
   crearVenta,
   editarVenta,
   eliminarVenta,
   consultarVenta,
-} from '../../controllers/ventas/controller.js';
+} = require('../../controllers/ventas/controller.js');
 
 const rutasVenta = Express.Router();
 
@@ -39,4 +39,4 @@ rutasVenta.route('/ventas/:id').delete((req, res) => {
   eliminarVenta(req.params.id, genercCallback(res));
 });
 
-export default rutasVenta;
+module.exports = rutasVenta;
