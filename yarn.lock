@@ -19,6 +19,11 @@
   dependencies:
     defer-to-connect "^1.0.1"
 
+"@types/aws-lambda@^8.10.56":
+  version "8.10.84"
+  resolved "https://registry.yarnpkg.com/@types/aws-lambda/-/aws-lambda-8.10.84.tgz#b1f391ceeb6908b28d8416d93f27afe8d1348d4e"
+  integrity sha512-5V78eLtmN0d4RA14hKDwcsMQRl3JotQJlhGFDBo/jdE2TyDFRaYwB/UmMUC4SzhSvRGn+YMkh7jGPnXi8COAng==
+
 "@types/body-parser@*":
   version "1.19.1"
   resolved "https://registry.yarnpkg.com/@types/body-parser/-/body-parser-1.19.1.tgz#0c0174c42a7d017b818303d4b5d969cb0b75929c"
@@ -1304,6 +1309,13 @@ serve-static@1.14.1:
     escape-html "~1.0.3"
     parseurl "~1.3.3"
     send "0.17.1"
+
+serverless-http@^2.7.0:
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/serverless-http/-/serverless-http-2.7.0.tgz#352ca38cbbba58dc71dcfb11bb27c92c3c81fe69"
+  integrity sha512-iWq0z1X2Xkuvz6wL305uCux/SypbojHlYsB5bzmF5TqoLYsdvMNIoCsgtWjwqWoo3AR2cjw3zAmHN2+U6mF99Q==
+  optionalDependencies:
+    "@types/aws-lambda" "^8.10.56"
 
 setprototypeof@1.1.1:
   version "1.1.1"
