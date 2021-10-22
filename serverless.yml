@@ -1,0 +1,15 @@
+org: danyel117
+app: api-serverless-clase
+service: mi-api-concesionario-serverless
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  stage: dev
+  region: us-east-1
+
+functions:
+  app:
+    handler: index.handler
+    events:
+      - http: ANY /
